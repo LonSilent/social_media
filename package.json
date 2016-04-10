@@ -1,0 +1,22 @@
+{
+  "name": "social_media_med",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LonSilent/social_media_med.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LonSilent/social_media_med/issues"
+  },
+  "homepage": "https://github.com/LonSilent/social_media_med#readme",
+  "dependencies": {
+    "materialize-css": "^0.97.6"
+  }
+}
