@@ -2,7 +2,7 @@ import csv
 import jieba
 from collections import Counter
 
-with open('csquare_half.csv', 'r') as f:
+with open('csquare_all.csv', 'r') as f:
 	reader = csv.reader(f)
 	file_list = list(reader)
 
@@ -16,10 +16,18 @@ with open('csquare_half.csv', 'r') as f:
 # likes = 12
 # share = 13
 
-i=1
+# i = (int)(0.75*len(file_list))
+i = 1
 seg_list = []
+cut_list = []
+
+symbol_list = ["\""," ","，","/","#","-","↓","！",".",")","「","」","】","【","？","(",
+	":","✨","、","★","。","：","!","）","~",";","_","▷","◇","\'","　","●","?","＿",
+	"”","“",">","《","》","’","…","^","=","$"]
 
 while(i<len(file_list)):
+	for symbol in symbol_list:
+		file_list[i][7] = file_list[i][7].replace(symbol,"") 
 	temp = list(jieba.cut(file_list[i][7], cut_all=False))
 	seg_list += temp
 	del temp[:]
@@ -33,4 +41,10 @@ for key,value in result.items():
 	l.append(temp)
 l.sort(key=lambda x: x[1])
 l = l[::-1]
-print(l)
+# print(l)
+
+i = 0
+with open("output_csquare_all.csv", "w") as f:
+	while(i<len(l)):
+		f.write(l[i][0]+','+str(l[i][1])+'\n')
+		i+=1
