@@ -45,6 +45,6 @@ function RemoveHTML(strText) {
 	var regEx = /(<([^>]+)>)/ig;
 	var newline = /\r?\n|\r/g;
 
-	return strText.replace(new RegExp("&nbsp;", 'g'), "").replace(newline, "").replace(",", "").replace(regEx, "");
+	return strText.replace(new RegExp("&nbsp;", 'g'), "").replace(newline, "").replace(new RegExp(",", 'g'), "，").replace(regEx, "");
 
 }
