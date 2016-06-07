@@ -1,18 +1,20 @@
 var request = require('request');
 var fs = require('fs');
 var _ = require('lodash');
+// source data
 var beauty = require('./data/food.json');
 
 var food = _.uniq(beauty, "number");
 var j = 0;
 
-// console.log(food[1]);
-
 var file_name = 'result_food.csv';
 
+// start position
 const offset = 18000;
+// end position
 const limit = offset + 1000;
 
+// uncomment for first crawl 
 
 // fs.writeFile(file_name, 'title,url,hits,user,device,hour,search_words,count_images,count_comments,' + 'body\n', function(err) {
 // 	if (err) return console.log(err);
