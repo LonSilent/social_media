@@ -4,13 +4,14 @@ var _ = require('lodash');
 var beauty = require('./data/food.json');
 
 var food = _.uniq(beauty, "number");
+var j = 0;
 
 // console.log(food[1]);
 
 var file_name = 'result_food.csv';
 
-const offset = 10800;
-const limit = offset + 600;
+const offset = 18000;
+const limit = offset + 1000;
 
 
 // fs.writeFile(file_name, 'title,url,hits,user,device,hour,search_words,count_images,count_comments,' + 'body\n', function(err) {
@@ -47,18 +48,22 @@ function getter(i) {
 					result.article.images.length + ',' +
 					result.article.info.comments_count + ',' + body + '\n';
 				console.log("success: " + i);
+				console.log("count: " + j);
 				fs.appendFile(file_name, string, function(err) {
 					if (err) return console.log(err);
 				});
+				j++;
 				setTimeout(function() {
 					getter(i + 1);
-				}, 100);
+				}, 30);
 			} else {
 				console.log(error);
 				console.log("error: " + i);
+				console.log("count: " + j);
+				j++;
 				setTimeout(function() {
 					getter(i + 1);
-				}, 100);
+				}, 30);
 			}
 		});
 	}
