@@ -3,5 +3,6 @@
 ## api request
 ```
 cd crawler/
-node crawler
+npm install
+node crawler.js
 ```
